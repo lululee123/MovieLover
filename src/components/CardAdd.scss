@@ -1,0 +1,58 @@
+@import 'color.scss';
+
+.CardAdd{
+  background-color: $bg;
+  color: white;
+  border: 3px solid aqua;
+  padding: 1vw;
+  text-align: center;
+  border-radius: 5px;
+  margin-left: 3vw;
+  margin-bottom: 3vw;
+  position: relative;
+  width: 9vw;
+  min-width: 9vw;
+  max-width: 9vw;
+  height: 14vw;
+  font-size: 16px;
+  line-height: 14vw;
+  cursor: pointer;
+  @media screen and (max-width:1023px){
+    width: 12vw;
+    min-width: 12vw;
+    max-width: 12vw;
+    height: 19vw;
+    line-height: 19vw;
+  }
+  @media screen and (max-width:500px){
+    width: 20vw;
+    min-width: 20vw;
+    max-width: 20vw;
+    height: 26vw;
+    line-height: 26vw;
+    font-size: 12px;
+  }
+}
+.CardAdd__edit{
+  position: absolute;
+  width: 20vw;
+  height: 20vw;
+  background-color: #f1ebda;
+  top: 20%;
+  left: 40%;
+  border-radius: 5px;
+  padding: 1vw;
+  z-index: 2;
+  @media screen and (max-width:1023px){
+    width: 30vw;
+    height: 30vw;
+    top: 15%;
+    left: 35%;
+  }
+  @media screen and (max-width:500px){
+    width: 50vw;
+    height: 40vw;
+    top: 12%;
+    left: 25%;
+  }
+}

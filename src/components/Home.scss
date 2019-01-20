@@ -1,0 +1,84 @@
+@import 'color.scss';
+
+.Home__box{
+  margin-top: 50px;
+  padding: 2vw;
+  color: white;
+  font-size: 28px;
+  .weather__box{
+    display: flex;
+    line-height: 40px;
+  }
+  .movie__box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2vw;
+    .movie__card{
+      width: 17vw;
+      margin-bottom: 5vw;
+      position: relative;
+      cursor: pointer;
+      @media screen and (max-width:1023px){
+        width: 23vw;
+      }
+      @media screen and (max-width:500px){
+        width: 29vw;
+      }
+      &:hover{
+       .movie__card_hover{
+          position: absolute;
+          background-color: $mainColor;
+          top: 0;
+          width: 13vw;
+          height: 25.87vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          padding: 0 2vw;
+          font-size: 16px;
+          @media screen and (max-width:1023px){
+            width: 19vw;
+            height: 35vw;
+          }
+          @media screen and (max-width:500px){
+            width: 25vw;
+            height: 44.13vw;
+            font-size: 12px;
+          }
+        .movie__watch, .movie__wanted{
+          display: block;
+          color: white;
+          cursor: pointer;
+          border: 3px solid white;
+          text-align: center;
+          padding: 1vw;
+          border-radius: 5px;
+        }
+       }
+      }
+      .movie__title{
+        font-size: 16px;
+      }
+      .movie__image{
+        width: 17vw;
+        height: 25.87vw;
+        @media screen and (max-width:1023px){
+          width: 23vw;
+          height: 35vw;
+        }
+        @media screen and (max-width:500px){
+          width: 29vw;
+          height: 44.13vw;
+        }
+      }
+      .movie__watch{
+        display: none;
+      }
+      .movie__wanted{
+        display: none;
+      }
+    }
+  }
+  
+}

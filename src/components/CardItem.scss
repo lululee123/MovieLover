@@ -1,0 +1,136 @@
+@import 'color.scss';
+
+.cardBox{
+  background-color: $bg;
+  color: white;
+  border: 3px solid $subColor;
+  padding: 1vw;
+  text-align: center;
+  border-radius: 5px;
+  margin-left: 3vw;
+  margin-bottom: 3vw;
+  position: relative;
+  width: 14vw;
+  height: 14vw;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+  @media screen and (max-width:1023px){
+    width: 19vw;
+    height: 19vw;
+    font-size: 14px;
+  }
+  @media screen and (max-width:500px){
+    width: 26vw;
+    height: 26vw;
+    font-size: 12px;
+  }
+  .edit{
+    display: none;
+  }
+  &:hover{
+    .edit{
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image:url('./pencil.svg');
+      background-color: $bg;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 30%;
+      @media screen and (max-width:1023px){
+        line-height: 20vw; 
+      }
+      @media screen and (max-width:500px){
+        line-height: 30vw; 
+      } 
+    }
+  }
+}
+.cardBox__edit{
+  position: absolute;
+  width: 20vw;
+  height: 12vw;
+  background-color: #f1ebda;
+  top: 20%;
+  left: 40%;
+  border-radius: 5px;
+  padding: 1vw;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media screen and (max-width:1023px){
+    width: 30vw;
+    height: 20vw;
+    top: 15%;
+    left: 35%;
+  }
+  @media screen and (max-width:500px){
+    width: 70vw;
+    height: 30vw;
+    top: 10%;
+    left: 14%;
+  }
+
+  .saveBtn{
+    text-align: center;
+    bottom: 0;
+    height: 3vw;
+    line-height: 3vw;
+    background: $mainColor;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    @media screen and (max-width:1023px){
+      height: 5vw;
+      line-height: 5vw;
+    }
+    @media screen and (max-width:500px){
+      height: 7vw;
+      line-height: 7vw;
+    }
+  }
+  .deleteBtn{
+    text-align: center;
+    bottom: 0;
+    height: 3vw;
+    line-height: 3vw;
+    background: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    @media screen and (max-width:1023px){
+      height: 5vw;
+      line-height: 5vw;
+    }
+    @media screen and (max-width:500px){
+      height: 7vw;
+      line-height: 7vw;
+    }
+  }
+  input{
+    border-radius: 5px;
+    width: 19.5vw;
+    height: 3vw;
+    font-size: 21px;
+    border: none;
+    padding-left: 5px;
+    font-size: 16px;
+    @media screen and (max-width:1023px){
+      font-size: 14px;
+      width: 29.5vw;
+      height: 5vw;
+    }
+    @media screen and (max-width:500px){
+      font-size: 12px;
+      width: 68vw;
+      height: 7vw;
+    }
+  }
+}

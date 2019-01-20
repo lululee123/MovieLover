@@ -1,0 +1,140 @@
+@import 'color.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  outline: 0;
+}
+body { 
+  background: $bg; 
+  font-size:14px; 
+}
+a { 
+  text-decoration:none; 
+}
+img { 
+  border:none; 
+}
+ol,ul,li { 
+  list-style:none; 
+}
+input, textarea, select, button { 
+  font-size:14px;
+}
+.App{
+  width: 100vw;
+  height: 100%;
+  overflow-y: scroll;
+  .navBar{
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    background-color: $mainColor;
+    display: flex;
+    line-height: 50px;
+    justify-content: space-between;
+    z-index: 5;
+    @media screen and (max-width: 1023px){
+      display: none;
+    }
+    .left{
+      display: flex;
+      margin-left: 10px;
+      align-items: center;
+      .navBar__logo{
+        background-image: url('./oscars.svg');
+        width: 40px;
+        height: 40px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        cursor: pointer;
+      }
+      li{
+        color: white;
+        font-size: 18px;
+        margin-right: 10px;
+        a{
+          color: white;
+          font-size: 18px;
+        }
+      }
+    }
+    .right{
+      margin-right: 10px;
+      li{
+        color: white;
+        font-size: 18px;      
+      }
+    }
+  }
+  .navBar__mobile{
+    display: none;
+    @media screen and (max-width: 1023px){
+      width: 100vw;
+      height: 50px;
+      position: fixed;
+      top: 0;
+      background-color: $mainColor;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      line-height: 50px;
+      z-index: 5;
+    }
+    .navBar__mobile__logo{
+      background-image: url('./oscars.svg');
+      width: 40px;
+      height: 40px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      margin-left: 0.5vw;
+      cursor: pointer;
+    }
+    .navBar__mobile__icon{
+      background-image: url('./menu.svg');
+      width: 40px;
+      height: 40px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      margin-right: 2vw;
+      cursor: pointer;
+    }
+    .sidemenu{
+      position: absolute;
+      width: 90vw;
+      height: 100vh;
+      background: black;
+      text-align: center;
+      padding: 5vw;
+      top: 0;
+      .close{
+        color: white;
+        font-size: 30px;
+        text-align: right;
+        margin-bottom: 10vw;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      li{
+        color: white;
+        font-size: 30px;
+        margin-right: 10px;
+        line-height: 60px;
+        font-weight: 700;
+        a{
+          color: white;
+          font-size: 30px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

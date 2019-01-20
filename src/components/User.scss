@@ -1,0 +1,29 @@
+@import 'color.scss';
+
+.user_box{
+  height: 100%;
+  width: 100%;
+  background: $bg;
+  position: absolute;
+  .user_box__inner{
+    position: absolute;
+    top: 40%;
+    left: 32%;
+    border: 10px solid $mainColor;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (max-width:1024px){
+      left: 7%;
+      top: 25%;
+      margin-bottom: 5vw;
+    }
+    .signUpBtn{
+      color: white;
+      font-size: 20px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+  }
+}
