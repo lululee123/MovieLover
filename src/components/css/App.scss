@@ -47,7 +47,7 @@ input, textarea, select, button {
       margin-left: 10px;
       align-items: center;
       .navBar__logo{
-        background-image: url('./oscars.svg');
+        background-image: url('../../oscars.svg');
         width: 40px;
         height: 40px;
         background-position: center center;
@@ -88,7 +88,7 @@ input, textarea, select, button {
       z-index: 5;
     }
     .navBar__mobile__logo{
-      background-image: url('./oscars.svg');
+      background-image: url('../../oscars.svg');
       width: 40px;
       height: 40px;
       background-position: center center;
@@ -98,7 +98,7 @@ input, textarea, select, button {
       cursor: pointer;
     }
     .navBar__mobile__icon{
-      background-image: url('./menu.svg');
+      background-image: url('../../menu.svg');
       width: 40px;
       height: 40px;
       background-position: center center;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Signup from './Signup';
 import Signin from './Signin';
-import './User.scss';
+import './css/User.scss';
 import { connect } from 'react-redux';
 import { UserId } from '../actions/index';
 

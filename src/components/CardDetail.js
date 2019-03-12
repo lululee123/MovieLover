@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import "../../node_modules/react-datepicker/dist/react-datepicker.css";
 import { withFirebase } from './Firebase';
-import './CardDetail.scss';
+import './css/CardDetail.scss';
 
 class CardDetail extends Component{
   constructor(){
@@ -57,11 +57,14 @@ class CardDetail extends Component{
               time: this.state.item.time
             }
           })} }/>
-          <DatePicker
+          {
+            this.props.type === 'watch' ? 
+            <DatePicker
             selected = {this.state.item.time}
             onChange = {(event) => this.handleChange(event)}
             dateFormat = "YYYY-MM-dd"
-          />
+            /> : ''
+          }
         </div>
         <div className="addBtn" onClick={() => {
           if (this.props.type === 'wanted'){

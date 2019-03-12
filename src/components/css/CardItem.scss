@@ -38,7 +38,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-image:url('./pencil.svg');
+      background-image:url('../../pencil.svg');
       background-color: $bg;
       background-repeat: no-repeat;
       background-position: center center;
@@ -55,7 +55,7 @@
 .cardBox__edit{
   position: absolute;
   width: 20vw;
-  height: 12vw;
+  height: 14vw;
   background-color: #f1ebda;
   top: 20%;
   left: 40%;
@@ -67,7 +67,7 @@
   justify-content: space-between;
   @media screen and (max-width:1023px){
     width: 30vw;
-    height: 20vw;
+    height: 22vw;
     top: 15%;
     left: 35%;
   }
@@ -102,6 +102,24 @@
     height: 3vw;
     line-height: 3vw;
     background: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    @media screen and (max-width:1023px){
+      height: 5vw;
+      line-height: 5vw;
+    }
+    @media screen and (max-width:500px){
+      height: 7vw;
+      line-height: 7vw;
+    }
+  }
+  .moveBtn{
+    text-align: center;
+    bottom: 0;
+    height: 3vw;
+    line-height: 3vw;
+    background: #472FFF;
     color: white;
     border-radius: 5px;
     cursor: pointer;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from './Firebase';
-import './Signup.scss';
+import './css/Signup.scss';
 
 const INITIAL_STATE = {
   email: '',
@@ -35,6 +35,7 @@ class SignUpFormBase extends Component {
       .then(authUser => {
         this.props.IdUpdate(authUser.user.uid);
         this.props.changeLoginStatus();
+        window.location.reload();
       })
       .catch(error => {
         this.setState({ error });

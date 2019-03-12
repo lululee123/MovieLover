@@ -24,3 +24,15 @@ export const AddCardType = (type) => {
     payload: type
   }
 }
+export const CardWantedData = (items) => {
+  return{
+    type: 'SAVE_CARD_WANTED_DATA',
+    payload: items
+  }
+}
+export const CardWatchData = (items) => {
+  return{
+    type: 'SAVE_CARD_WATCH_DATA',
+    payload: items
+  }
+}

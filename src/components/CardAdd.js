@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { AddCard } from '../actions/index';
 import CardDetail from './CardDetail';
-import './CardAdd.scss';
+import './css/CardAdd.scss';
 
 class CardAdd extends Component{
   render(){

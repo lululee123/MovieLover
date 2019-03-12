@@ -6,46 +6,6 @@ import { withFirebase } from './Firebase';
 class Card extends Component{
   constructor(props){
     super(props);
-
-    this.state = {
-      watch: {},
-      wanted: {}
-    }
-  }
-
-  componentDidMount(){
-    this.props.firebase.user(this.props.userId).on("value", snap => {
-      if (snap.val() !==  null){
-        if (snap.val().hasOwnProperty("watch")){
-          this.setState({
-            watch: snap.val().watch
-          })
-          
-        }
-        else{
-          this.setState({
-            watch: {}
-          })
-        }
-        if (snap.val().hasOwnProperty("wanted")){
-          this.setState({
-            wanted: snap.val().wanted
-          })
-          
-        }
-        else{
-          this.setState({
-            wanted: {}
-          })
-        }
-      }
-      if (snap.val() === null){
-        this.setState({
-          watch: {},
-          wanted: {}
-        })
-      }
-    })
   }
 
   render(){
@@ -59,16 +19,16 @@ class Card extends Component{
         (
           <div style = {style}>
             {
-              Object.keys(this.state.watch).map((s) => { 
-                return <CardItem detail = {this.state.watch[s]}  key={s} id ={s} />
+              Object.keys(this.props.cardWatch).map((s) => { 
+                return <CardItem detail = {this.props.cardWatch[s]}  key={s} id ={s} />
               })
             }
           </div> ): 
         (
           <div style = {style}>
             {
-              Object.keys(this.state.wanted).map((s) => { 
-                return <CardItem detail = {this.state.wanted[s]}  key={s} id ={s} />
+              Object.keys(this.props.cardWanted).map((s) => { 
+                return <CardItem detail = {this.props.cardWanted[s]}  key={s} id ={s} />
               })
             }
           </div>
@@ -79,7 +39,7 @@ class Card extends Component{
 }
 
 const mapStateToProps = (state) => {
-  return {userId: state.UserIdReducer, type: state.CardTypeReducer}
+  return {type: state.CardTypeReducer, cardWatch: state.SaveWatchCardReducer, cardWanted: state.SaveWantedCardReducer}
 }
 
 export default connect(mapStateToProps)(withFirebase(Card));

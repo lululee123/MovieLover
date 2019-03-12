@@ -21,9 +21,22 @@ const CardTypeReducer = (type = 'watch' , action) => {
   }
   return type;
 }
-
+const SaveWantedCardReducer = (item = {}, action) =>{
+  if (action.type === 'SAVE_CARD_WANTED_DATA'){
+    return action.payload;
+  }
+  return item;
+}
+const SaveWatchCardReducer = (item = {}, action) =>{
+  if (action.type === 'SAVE_CARD_WATCH_DATA'){
+    return action.payload;
+  }
+  return item;
+}
 export default combineReducers({
   AddCardReducer: AddCardReducer,
   UserIdReducer: UserIdReducer,
-  CardTypeReducer: CardTypeReducer
+  CardTypeReducer: CardTypeReducer,
+  SaveWantedCardReducer: SaveWantedCardReducer,
+  SaveWatchCardReducer: SaveWatchCardReducer
 })
