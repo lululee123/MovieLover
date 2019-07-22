@@ -1,10 +1,99 @@
-.folder {
-  color: #472fff;
-  cursor: pointer;
+@import 'color.scss';
+
+.cal__folder{
+  margin: 30px auto;
+  .folder, .folder_inner  {
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    width: 80vw;
+    margin: 0 auto;
+  }
+  .folder_inner{
+    width: 80vw;
+    margin: 20px auto;
+    padding-left: 40px;
+  }
+  .folder:before, .folder_inner:before  {
+    content: '📁';
+    font-size: 20px;
+  }
+  .folder.open:before,.folder_inner.open:before {
+    content: '📂';
+    font-size: 20px;
+  }
+  .folder__item{
+    color: white;
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+
+  #container {
+    width: 100vw;
+    height: 55vw;
+    max-width: 1000px;
+    max-height: 450px;
+    display: flex;
+    margin: 0 auto;
+  }
+
+  svg {
+    width: 97%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .bar {
+    fill: $mainColor;
+  }
+
+  text {
+    font-size: 12px;
+    fill: #fff;
+  }
+
+  path {
+    stroke: gray;
+  }
+
+  line {
+    stroke: gray;
+  }
+
+  line#limit {
+    stroke: #FED966;
+    stroke-width: 3;
+    stroke-dasharray: 3 6;
+  }
+
+  .grid path {
+    stroke-width: 0;
+  }
+
+  .grid .tick line {
+    stroke: #9FAAAE;
+    stroke-opacity: 0.3;
+  }
+
+  text.divergence {
+    font-size: 12px;
+    fill: #2F4A6D;
+  }
+
+  text.value {
+    font-size: 12px;
+  }
+
+  text.title {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  text.label {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
 }
-.folder:before {
-  content: '📁';
-}
-.folder.open:before {
-  content: '📂';
-}
+

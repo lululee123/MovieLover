@@ -7,36 +7,30 @@ const AddCardReducer = (add = false, action) => {
   return add;
 }
 
-const UserIdReducer = (id = localStorage.getItem('ID'), action) => {
-  if (action.type === 'USER_ID'){
-    localStorage.setItem('ID', action.payload);
-    return action.payload;
-  }
-  return id;
-}
-
 const CardTypeReducer = (type = 'watch' , action) => {
   if (action.type === 'ADD_CARD_TYPE'){
     return action.payload;
   }
   return type;
 }
-const SaveWantedCardReducer = (item = {}, action) =>{
-  if (action.type === 'SAVE_CARD_WANTED_DATA'){
-    return action.payload;
+
+const CheckLoginReducer = (UserInit = {status: 'Loading', uid: '', list: {}}, action = 'FETCHING') => {
+  switch( action.type ){
+    case 'FETCH':
+      return {...UserInit, status: 'Login', uid: action.payload};
+    case 'FETCH_ERROR':
+      return {status: 'Unlogin', uid: '', list: {}};
+    case 'FETCHTASKLIST':
+      return {...UserInit, list: action.payload};
+    case 'EMPTYTASKLIST':
+      return {...UserInit, list: action.payload}
+    default: 
+      return UserInit;  
   }
-  return item;
 }
-const SaveWatchCardReducer = (item = {}, action) =>{
-  if (action.type === 'SAVE_CARD_WATCH_DATA'){
-    return action.payload;
-  }
-  return item;
-}
+
 export default combineReducers({
   AddCardReducer: AddCardReducer,
-  UserIdReducer: UserIdReducer,
   CardTypeReducer: CardTypeReducer,
-  SaveWantedCardReducer: SaveWantedCardReducer,
-  SaveWatchCardReducer: SaveWatchCardReducer
+  CheckLoginReducer: CheckLoginReducer
 })

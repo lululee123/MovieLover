@@ -1,90 +1,121 @@
 import React, { Component } from 'react';
-import { withFirebase } from './Firebase';
-import './css/Signup.scss';
+import { connect } from 'react-redux';
+import { getUser } from '../actions/index';  
+import './css/User.scss';
 
-
-const SignInPage = (props) => (
-  <div className="signup__box">
-    <h1>登入</h1>
-    <SignInForm changeLoginStatus = { props.changeLoginStatus } IdUpdate = { props.IdUpdate } AddCardItem = {props.AddCardItem} />
-  </div>
-);
-
-const INITIAL_STATE = {
-  email: '',
-  password: '',
-  error: null,
-};
-
-class SignInFormBase extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { ...INITIAL_STATE };
+    this.state = {
+      email: "",
+      password: "",
+      msg: "",
+      forgetPasswordEmail: "",
+      forget: false
+    };
   }
 
-  onSubmit = event => {
-    const { email, password } = this.state;
-
-    this.props.firebase
-      .doSignInWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        this.props.IdUpdate(authUser.user.uid);
-        this.props.changeLoginStatus();
-        window.location.reload();
+  LogIn = () => {
+    let { email, password } = this.state;
+    this.props.Firebase
+    .doSignInWithEmailAndPassword(email, password)
+    .then((authUser) => {
+        this.setState({
+          msg: "Success"
+        })
+        localStorage.setItem('FirebaseUID', authUser.user.uid)
+        this.props.getUser();
+      }
+    )
+    .catch( error => {
+      this.setState({
+        msg: error.toString(error)
       })
-      .catch(error => {
-        this.setState({ error });
-      });
-
-    event.preventDefault();
+    });
   };
 
-  onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  componentWillUnmount() {
-    this.props.firebase.users().off();
+  ForgetPasswordTrigger =() => {
+    this.setState({
+      forget: !this.state.forget
+    })
   }
+
+  SendEmail = () => {
+    if (this.state.forgetPasswordEmail.trim() !== ''){
+      this.props.Firebase
+      .doFetchSignInMethodsForEmail(this.state.forgetPasswordEmail)
+      .then( result => {
+        if (result.length > 0) {
+          this.props.Firebase
+          .doPasswordReset(this.state.forgetPasswordEmail)
+          .then(
+            this.setState({
+              msg: "Please Check Your Mail Box"
+            })
+          )
+        }
+      })
+      .catch(
+        this.setState({
+          msg: "Email is not exist!"
+        })
+      );
+    }
+  }
+
+  handleKeyDownLogin = (e) => {
+    if (e.key === 'Enter') {
+      this.LogIn();
+    }
+  } 
+
+  handleKeyDownForget= (e) => {
+    if (e.key === 'Enter') {
+      this.SendEmail(this.state.forgetPasswordEmail);
+    }
+  } 
 
   render() {
-    const { email, password, error } = this.state;
-
-    const isInvalid = password === '' || email === '';
-
     return (
-      <form onSubmit={this.onSubmit} className="signup__box_inner">
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email"
-          className="signup__input"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="密碼"
-          className="signup__input"
-        />
-        <button disabled={isInvalid} type="submit"  className="signup__enter">
-          登入
-        </button>
-        <br />
-        <div className="signup__error">
-          {error && <p>{error.message}</p>}
+      <div className="signup__box">
+      <h1>登入</h1>
+
+      {
+        this.state.forget ?
+        <div className="signup__box_inner">
+          <div className="signup__error">{this.state.msg}</div>
+          <input
+            className="signup__input"
+            placeholder='Email' 
+            onChange={forgetPasswordEmail => this.setState({ forgetPasswordEmail: forgetPasswordEmail.target.value })}
+            onKeyDown={this.handleKeyDownForget}
+          />
+          <div className="signup__enter" onClick={this.SendEmail}>送出</div>      
+          <div className="otherBtn" onClick={this.ForgetPasswordTrigger}>返回</div>
         </div>
-      </form>
+        : 
+        <div className="signup__box_inner">
+          <div className="signup__error">{this.state.msg}</div>
+          <input
+            className="signup__input"
+            placeholder='Email' 
+            onChange={email => this.setState({ email: email.target.value })}
+          />
+          <input
+            className="signup__input"
+            placeholder='密碼' 
+            type="password"
+            onChange={password => this.setState({ password: password.target.value })}
+            onKeyDown={this.handleKeyDownLogin}
+          />         
+          <div className="signup__enter" onClick={this.LogIn}>登入</div>
+          <div className="otherBtn" onClick={this.ForgetPasswordTrigger}>忘記密碼</div>
+          <div className="otherBtn" onClick={this.props.signupStatus}>註冊</div>
+        </div>
+      }
+      </div>
     );
   }
 }
 
-const SignInForm = withFirebase(SignInFormBase);
-
-export default SignInPage;
-
-export { SignInForm };
+export default connect('', {getUser: getUser})(SignIn);

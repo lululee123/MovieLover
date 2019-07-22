@@ -4,7 +4,7 @@
   margin-top: 50px;
   padding: 2vw;
   color: white;
-  font-size: 28px;
+  font-size: 26px;
   .weather__box{
     display: flex;
     line-height: 40px;
@@ -14,6 +14,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 2vw;
+    @media screen and (max-width:500px){
+      justify-content: start;
+    }
     .movie__card{
       width: 17vw;
       margin-bottom: 5vw;
@@ -23,29 +26,36 @@
         width: 23vw;
       }
       @media screen and (max-width:500px){
-        width: 29vw;
+        width: 29vw;    
+        margin-right: 3vw;
       }
-      &:hover{
-       .movie__card_hover{
+      
+      .movie__card_hover{
+        position: absolute;
+        background-color: $mainColor;
+        top: 0;
+        width: 13vw;
+        height: 25.87vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0 2vw;
+        font-size: 16px;
+        @media screen and (max-width:1023px){
+          width: 19vw;
+          height: 35vw;
+        }
+        @media screen and (max-width:500px){
+          width: 25vw;
+          height: 44.13vw;
+          font-size: 12px;
+        }
+        .movie__close{
           position: absolute;
-          background-color: $mainColor;
-          top: 0;
-          width: 13vw;
-          height: 25.87vw;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          padding: 0 2vw;
-          font-size: 16px;
-          @media screen and (max-width:1023px){
-            width: 19vw;
-            height: 35vw;
-          }
-          @media screen and (max-width:500px){
-            width: 25vw;
-            height: 44.13vw;
-            font-size: 12px;
-          }
+          top: 5px;
+          right: 2vw;
+          font-size: 16px;      
+        }
         .movie__watch, .movie__wanted{
           display: block;
           color: white;
@@ -55,11 +65,24 @@
           padding: 1vw;
           border-radius: 5px;
         }
-       }
       }
+    
       .movie__title{
         font-size: 16px;
       }
+
+      .movie__more{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 30px;
+        height: 23px;
+        background-color: $mainColor;
+        line-height: 5px;
+        text-align: center;
+        border-radius: 30px;
+      }
+
       .movie__image{
         width: 17vw;
         height: 25.87vw;
@@ -72,13 +95,6 @@
           height: 44.13vw;
         }
       }
-      .movie__watch{
-        display: none;
-      }
-      .movie__wanted{
-        display: none;
-      }
     }
   }
-  
 }

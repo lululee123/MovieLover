@@ -11,7 +11,7 @@ class CardAdd extends Component{
         <div>
           <div className="CardAdd">+</div>
           <div className="CardAdd__edit">
-            <CardDetail />
+            <CardDetail Firebase={this.props.Firebase} />
           </div>
         </div>
       )

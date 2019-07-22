@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { withFirebase } from './Firebase';
 import './css/Home.scss';
 import HomeMovie from './HomeMovie';
-
 
 class Home extends Component {
   constructor(props){
@@ -10,48 +8,78 @@ class Home extends Component {
     this.state = {
       movie: [],
       weather: 0,
-      weatherIcon: ''
+      weatherIcon: '',
+      weatherArea: true,
+      movieArea: true
     }
   }
 
-  componentDidMount() {
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=62e89effcdf6600bdd0c99c694029d19&language=zh-TW&region=tw")
-    .then((res) => res.json())
-    .then(data => {
-      let movie = data.results.map((item, idx) => {
+  async componentDidMount() {
+    try {
+      let responseMovie = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=62e89effcdf6600bdd0c99c694029d19&language=zh-TW&region=tw");
+      if (!responseMovie.ok) {
+        throw Error(responseMovie.statusText);
+      }
+      let jsonMovie = await responseMovie.json();
+      let movie = jsonMovie.results.map((item, idx) => {
         return (
-          <HomeMovie item = {item} idx = {idx}/>
+          <HomeMovie Firebase={this.props.Firebase} item={item} key={idx}/>
         )
       })
       this.setState({
         movie: movie
       })
-    })
-
-    fetch("//api.openweathermap.org/data/2.5/weather?q=Taipei,tw&APPID=bb26d8de2301acc163da7859740eaec3&units=metric")
-    .then((res) => res.json())
-    .then(data => {
+    } catch (error) {
       this.setState({
-        weather: data.main.temp,
-        weatherIcon: 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png'
+        movieArea: false
       })
-    })
+    }
 
+    try {
+      let responseWeather = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Taipei,tw&APPID=bb26d8de2301acc163da7859740eaec3&units=metric")
+      if (!responseWeather.ok) {
+        throw Error(responseWeather.statusText);
+      }
+      let jsonWeather = await responseWeather.json();
+      this.setState({
+        weather: jsonWeather.main.temp,
+        weatherIcon: 'https://openweathermap.org/img/w/' + jsonWeather.weather[0].icon + '.png'
+      })
+    } catch (error) {
+      this.setState({
+        weatherArea: false
+      })
+    }
   }
 
   render(){
     return (
       <div className="Home__box">
-        <div className="weather__box">現在溫度 {this.state.weather}°C <img src={this.state.weatherIcon} ></img></div>
-        <div>{parseInt(this.state.weather) >= 20 ? '好天氣，出門看場電影吧' : '有點冷，在家看場電影吧'}</div>
+        {
+          this.state.weatherArea 
+          ?
+          <div>
+            <div className="weather__box">現在溫度 {this.state.weather}°C <img src={this.state.weatherIcon} alt=""></img></div>
+            <div>{parseInt(this.state.weather) >= 20 ? '好天氣，出門看場電影吧' : '有點冷，在家看場電影吧'}</div>
+          </div>
+          : 
+          ''
+        }
         <br />
-        熱門影片 
-        <div className="movie__box">
-          {this.state.movie}
-        </div>
+        熱門影片
+        {
+          this.state.movieArea
+          ?
+          <div className="movie__box">
+            {this.state.movie}
+          </div>
+          :
+          <div>無資料...</div>
+        } 
+        
       </div>
     )
   }  
 }
 
-export default withFirebase(Home);
+export default Home;

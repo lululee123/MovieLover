@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { AddCard } from '../actions/index';
 import DatePicker from "react-datepicker";
 import moment from "moment";
-import "../../node_modules/react-datepicker/dist/react-datepicker.css";
-import { withFirebase } from './Firebase';
+import "react-datepicker/dist/react-datepicker.css";
 import './css/CardDetail.scss';
 
 class CardDetail extends Component{
@@ -28,8 +27,8 @@ class CardDetail extends Component{
   }
   
   updateWatch = () => {
-    this.props.firebase
-      .user(this.props.userId)
+    this.props.Firebase
+      .user(this.props.firebaseUID)
       .child(this.props.type)
       .push({
         "name": this.state.item.name,
@@ -37,8 +36,8 @@ class CardDetail extends Component{
       });
   }
   updateWanted = () => {
-    this.props.firebase
-      .user(this.props.userId)
+    this.props.Firebase
+      .user(this.props.firebaseUID)
       .child(this.props.type)
       .push({
         "name": this.state.item.name,
@@ -49,7 +48,7 @@ class CardDetail extends Component{
   render(){
     return (
       <div className="edit__box">
-        <div className="closeBtn" onClick={() => {this.props.AddCard(!this.props.add)}}>x</div>
+        <div className="closeBtn" onClick={() => {this.props.AddCard(!this.props.add)}}>&#10060;</div>
         <div>
           <input placeholder="Name" onChange = { (e) => {this.setState({
             item: {
@@ -60,7 +59,7 @@ class CardDetail extends Component{
           {
             this.props.type === 'watch' ? 
             <DatePicker
-            selected = {this.state.item.time}
+            value = {this.state.item.time}
             onChange = {(event) => this.handleChange(event)}
             dateFormat = "YYYY-MM-dd"
             /> : ''
@@ -81,6 +80,11 @@ class CardDetail extends Component{
 }
 
 const mapStateToProps = (state) => {
-  return {add: state.AddCardReducer, userId: state.UserIdReducer, type: state.CardTypeReducer}
+  return {
+    add: state.AddCardReducer, 
+    type: state.CardTypeReducer,
+    firebaseUID: state.CheckLoginReducer.uid
+  }
 }
-export default connect(mapStateToProps, {AddCard: AddCard})(withFirebase(CardDetail));
+
+export default connect(mapStateToProps, {AddCard: AddCard})(CardDetail);

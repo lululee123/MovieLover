@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import { withFirebase } from './Firebase';
+import { connect } from 'react-redux';
+import { getUser } from '../actions/index';  
 
 class Signout extends Component {
-  constructor(props){
-    super(props);
-  }
   signOut = () => {
-    this.props.firebase
+    let r = window.confirm("確定要登出嗎");
+    if (r) {
+      this.props.Firebase
       .doSignOut()
       .then(() => {
-        this.props.changeLoginStatus();
-        localStorage.setItem('ID', null);
-      })
-      .catch(() => {
-        console.log('logout error');
+        localStorage.setItem('FirebaseUID', '');
+        this.props.getUser();
+        window.location.reload();
       });
+    } 
   }
 
   render(){
@@ -33,5 +32,4 @@ const style = {
   cursor: 'pointer'
 };
   
-
-export default withFirebase(Signout);
+export default connect('', {getUser: getUser})(Signout);

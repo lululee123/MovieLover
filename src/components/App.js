@@ -11,46 +11,19 @@ import {
   Link,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withFirebase } from './Firebase';
-import { CardWantedData, CardWatchData } from '../actions/index';
+import { TaskList, getUser } from '../actions/index';
 
 class App extends Component {
   constructor(){
     super()
-
     this.state = {
-      loginStatus: localStorage.getItem('ID') === 'null' || localStorage.getItem('ID') === null  ? true : false,
-      sidemenu: false
+      sidemenu: false,
+      get: false
     }
   }
 
   componentDidMount(){
-    this.props.firebase.user(this.props.userId).on("value", snap => {
-      if (snap.val() !==  null){
-        if (snap.val().hasOwnProperty("watch")){
-          this.props.CardWatchData(snap.val().watch);
-        }
-        else{
-          this.props.CardWatchData({});
-        }
-        if (snap.val().hasOwnProperty("wanted")){
-          this.props.CardWantedData(snap.val().wanted);
-        }
-        else{
-          this.props.CardWantedData({});
-        }
-      }
-      if (snap.val() === null){
-        this.props.CardWantedData({});
-        this.props.CardWatchData({});
-      }
-    })
-  }
-
-  changeLoginStatus = () => {
-    this.setState({
-      loginStatus: !this.state.loginStatus
-    })
+    this.props.getUser();
   }
 
   changeSideMenuStatus = () => {
@@ -59,53 +32,81 @@ class App extends Component {
     })
   }
 
+  getListWhileFirebaseIDReady = () => {
+    if (this.props.Firebase && !this.state.get){
+      this.props.Firebase.user(this.props.firebaseUID).on("value", snap => {
+        if (snap.val() !==  null){
+          this.props.TaskList(snap.val());
+        } else {
+          this.props.TaskList('');
+        }
+      })
+      this.setState({
+        get: true
+      })
+    }
+  }
+
   render() {
-    if (this.state.loginStatus === true){
+    if (this.props.CheckLogin === 'Unlogin'){
       return (
         <div className="App">
-          <User changeLoginStatus = {this.changeLoginStatus} />
+          <User Firebase={this.props.Firebase} />
         </div>        
       );
     }
-    return (
-      <Router>
-      <div className="App">
-        <ul className="navBar">
-          <div className="left">
-            <Link to="/"><li className="navBar__logo"></li></Link>
-            <li><Link to="/Card">我的清單</Link></li>
-            <li><Link to="/Calculate">分析</Link></li>
+    if (this.props.CheckLogin === 'Loading'){
+      return (
+        <div className="welcome">
+          <div className="welcome__text">Welcome Back</div>
+        </div>        
+      );
+    } else {
+      this.getListWhileFirebaseIDReady();
+      return (
+        <Router>
+          <div className="App">
+            <ul className="navBar">
+              <div className="left">
+                <Link to="/"><li className="navBar__logo"></li></Link>
+                <li><Link to="/Card">我的清單</Link></li>
+                <li><Link to="/Calculate">分析</Link></li>
+              </div>
+              <div className="right">
+                <Signout Firebase={this.props.Firebase} closeSideMenu={this.changeSideMenuStatus} />
+              </div>
+            </ul>
+            <ul className="navBar__mobile">
+              <Link to="/"><li className="navBar__mobile__logo"></li></Link>
+              <div className="navBar__mobile__icon" onClick={this.changeSideMenuStatus}></div>
+              {
+                this.state.sidemenu ? 
+                  <div className="sidemenu">
+                  <div className="close" onClick={this.changeSideMenuStatus}>&#10060;</div>
+                  <li onClick={this.changeSideMenuStatus}><Link to="/">靈感</Link></li>
+                  <li onClick={this.changeSideMenuStatus}><Link to="/Card">我的清單</Link></li>
+                  <li onClick={this.changeSideMenuStatus}><Link to="/Calculate">分析</Link></li>
+                  <Signout Firebase={this.props.Firebase} closeSideMenu={this.changeSideMenuStatus} />
+                </div>
+                : ''
+              }
+            </ul>
+            <Route exact path="/" render={() => <Home Firebase={this.props.Firebase} />}/>
+            <Route  path="/Card" render={() => <CardCom Firebase={this.props.Firebase} />}/>
+            <Route path="/Calculate" component={Calculate}/>
           </div>
-          <div className="right">
-            <Signout closeSideMenu={this.changeSideMenuStatus} changeLoginStatus = {this.changeLoginStatus} />
-          </div>
-        </ul>
-        <ul className="navBar__mobile">
-          <Link to="/"><li className="navBar__mobile__logo"></li></Link>
-          <div className="navBar__mobile__icon" onClick={() => this.changeSideMenuStatus()}></div>
-          {
-            this.state.sidemenu ? 
-              <div className="sidemenu">
-              <div className="close" onClick={() => this.changeSideMenuStatus()}>X</div>
-              <li onClick={() => this.changeSideMenuStatus()}><Link to="/">靈感</Link></li>
-              <li onClick={() => this.changeSideMenuStatus()}><Link to="/Card">我的清單</Link></li>
-              <li onClick={() => this.changeSideMenuStatus()}><Link to="/Calculate">分析</Link></li>
-              <Signout closeSideMenu={this.changeSideMenuStatus} changeLoginStatus = {this.changeLoginStatus} />
-            </div>
-             : ''
-          }
-        </ul>
-        <Route exact path="/" component={Home}/>
-        <Route path="/Card" component={CardCom}/>
-        <Route path="/Calculate" component={Calculate}/>
-      </div>
-    </Router>
+        </Router>
     );
+    }
+    
   }
 }
 
 const mapStateToProps = (state) => {
-  return {userId: state.UserIdReducer, cardWatch: state.SaveWatchCardReducer, cardWanted: state.SaveWantedCardReducer}
+  return { 
+    firebaseUID: state.CheckLoginReducer.uid,
+    CheckLogin: state.CheckLoginReducer.status
+  }
 }
 
-export default connect(mapStateToProps, {CardWantedData: CardWantedData, CardWatchData: CardWatchData})(withFirebase(App));
+export default connect(mapStateToProps, {getUser: getUser, TaskList: TaskList})(App);

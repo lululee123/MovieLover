@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withFirebase } from './Firebase';
 import './css/CardItem.scss';
 
 class CardItem extends Component{
@@ -16,8 +15,8 @@ class CardItem extends Component{
   }
 
   set = (e) => {
-    this.props.firebase
-      .user(this.props.userId)
+    this.props.Firebase
+      .user(this.props.firebaseUID)
       .child(this.props.type)
       .child(e)
       .set({
@@ -27,8 +26,8 @@ class CardItem extends Component{
   }
 
   delete = (e) => {
-    this.props.firebase
-      .user(this.props.userId)
+    this.props.Firebase
+      .user(this.props.firebaseUID)
       .child(this.props.type)
       .child(e)
       .remove();
@@ -36,27 +35,32 @@ class CardItem extends Component{
 
   move = (e) => {
     //remove
-    this.props.firebase
-      .user(this.props.userId)
-      .child(this.props.type)
-      .child(e)
-      .remove();
+    this.props.Firebase
+    .user(this.props.firebaseUID)
+    .child(this.props.type)
+    .child(e)
+    .remove();
 
 
     //add to watch  
-    this.props.firebase
-      .user(this.props.userId)
-      .child('watch')
-      .child(e)
-      .set({
-        "name": this.state.item.name,
-        "time": this.state.item.time
-      });  
+    this.props.Firebase
+    .user(this.props.firebaseUID)
+    .child('watch')
+    .child(e)
+    .set({
+      "name": this.state.item.name,
+      "time": this.state.item.time
+    });  
   }
+
   render(){
     return (
       <div className={this.state.edit ? "cardBox__edit" : "cardBox"}>
         {this.state.edit ? '' : <div className="edit" onClick = {() => {this.setState({edit: !this.state.edit})}}></div> }
+        {this.state.edit ? 
+          <div className="closeBtn" onClick = {() => {
+            this.setState({edit: !this.state.edit});
+          }}>&#10060;</div> : '' }
         {this.state.edit ? 
           <input onChange = {(e) => {this.setState({item:{name: e.target.value, time: this.state.item.time}})}} 
           value = {this.state.item.name} /> : 
@@ -86,6 +90,9 @@ class CardItem extends Component{
 }
 
 const mapStateToProps = (state) => {
-  return {userId: state.UserIdReducer, type: state.CardTypeReducer}
+  return {
+    type: state.CardTypeReducer,
+    firebaseUID: state.CheckLoginReducer.uid
+  }
 }
-export default connect(mapStateToProps)(withFirebase(CardItem));
+export default connect(mapStateToProps)(CardItem);

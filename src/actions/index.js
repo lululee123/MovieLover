@@ -1,9 +1,4 @@
-export const LoginState = (status) =>{
-  return {
-    type: 'LOGIN_STATUS',
-    payload: status
-  }
-}
+import firebase from "firebase/app";
 
 export const AddCard = (add) => {
   return {
@@ -12,27 +7,56 @@ export const AddCard = (add) => {
   }
 }
 
-export const UserId = (id) => {
-  return {
-    type: 'USER_ID',
-    payload: id
-  }
-}
 export const AddCardType = (type) => {
   return {
     type: 'ADD_CARD_TYPE',
     payload: type
   }
 }
-export const CardWantedData = (items) => {
-  return{
-    type: 'SAVE_CARD_WANTED_DATA',
-    payload: items
+
+
+const Fetch= (res) => {
+  return {
+    type: 'FETCH',
+    payload: res
   }
 }
-export const CardWatchData = (items) => {
-  return{
-    type: 'SAVE_CARD_WATCH_DATA',
-    payload: items
+const FetchError = () => {
+  return {
+    type: 'FETCH_ERROR'
+  }
+}
+
+export const getUser = () => (dispatch) => {
+  let user = firebase.auth().currentUser;
+  if (user) {
+    dispatch(Fetch(user.uid));
+  } else if (localStorage.getItem('FirebaseUID')){
+    dispatch(Fetch(localStorage.getItem('FirebaseUID')));
+  } else {
+    dispatch(FetchError());
+  }
+}
+
+
+const FetchTaskList = (res) => {
+  return {
+    type: 'FETCHTASKLIST',
+    payload: res
+  }
+} 
+
+const EmptyTaskList = () => {
+  return {
+    type: 'EMPTYTASKLIST',
+    payload: {}
+  }
+} 
+
+export const TaskList = (list) => (dispatch) => {
+  if (list) {
+    dispatch(FetchTaskList(list));
+  } else {
+    dispatch(EmptyTaskList());
   }
 }

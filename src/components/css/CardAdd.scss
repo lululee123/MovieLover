@@ -1,58 +1,61 @@
 @import 'color.scss';
 
 .CardAdd{
-  background-color: $bg;
-  color: white;
-  border: 3px solid aqua;
+  background-color: aqua;
   padding: 1vw;
   text-align: center;
   border-radius: 5px;
-  margin-left: 3vw;
-  margin-bottom: 3vw;
-  position: relative;
-  width: 9vw;
-  min-width: 9vw;
-  max-width: 9vw;
-  height: 14vw;
-  font-size: 16px;
-  line-height: 14vw;
+  position: fixed;
+  width: 5vw;
+  height: 5vw;
+  font-size: 20px;
+  line-height: 5vw;
+  border-radius: 5vw;
   cursor: pointer;
+  color: black;
+  bottom: 5vw;
+  right: 5vw;
+  z-index: 1;
   @media screen and (max-width:1023px){
-    width: 12vw;
-    min-width: 12vw;
-    max-width: 12vw;
-    height: 19vw;
-    line-height: 19vw;
+    width: 7vw;
+    height: 7vw;
+    line-height: 7vw;
+    border-radius: 7vw;
   }
   @media screen and (max-width:500px){
-    width: 20vw;
-    min-width: 20vw;
-    max-width: 20vw;
-    height: 26vw;
-    line-height: 26vw;
-    font-size: 12px;
+    width: 10vw;
+    height: 10vw;
+    line-height: 10vw;
+    border-radius: 10vw;
   }
 }
 .CardAdd__edit{
-  position: absolute;
-  width: 20vw;
-  height: 20vw;
+  position: fixed;
+  width: 300px;
+  height: 200px;
   background-color: #f1ebda;
   top: 20%;
-  left: 40%;
+  left: 0;
+  right: 0;
+  margin: auto;
   border-radius: 5px;
-  padding: 1vw;
+  padding: 20px;
   z-index: 2;
   @media screen and (max-width:1023px){
-    width: 30vw;
-    height: 30vw;
+    width: 40vw;
+    height: 25vw;
     top: 15%;
-    left: 35%;
+    padding: 2vw;
+  }
+  @media screen and (max-width:750px){
+    width: 60vw;
+    height: 32vw;
+    top: 15%;
+    padding: 3vw;
   }
   @media screen and (max-width:500px){
-    width: 50vw;
-    height: 40vw;
+    width: 80vw;
+    height: 43vw;
     top: 12%;
-    left: 25%;
   }
 }

@@ -39,8 +39,8 @@ class CardCom extends Component {
           } }>待觀看</div>
         </div>
         <div style={contentStyle}>
-          <CardAdd />
-          <Card />
+          <CardAdd Firebase={this.props.Firebase} />
+          <Card Firebase={this.props.Firebase} />
         </div>
       </div>
     )
@@ -49,8 +49,7 @@ class CardCom extends Component {
 const style = {
   display: 'flex',
   flexDirection: 'column',
-  padding: '2vw',
-  paddingTop: 'calc(50px + 2vw)'
+  padding: 'calc(50px + 2vw) 2vw'
 };
 
 const BtnStyle = {
