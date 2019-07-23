@@ -26,11 +26,14 @@ class CardItem extends Component{
   }
 
   delete = (e) => {
-    this.props.Firebase
+    let r = window.confirm("確定要刪除嗎");
+    if (r) {
+      this.props.Firebase
       .user(this.props.firebaseUID)
       .child(this.props.type)
       .child(e)
       .remove();
+    } 
   }
 
   move = (e) => {
