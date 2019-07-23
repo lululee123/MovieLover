@@ -53,7 +53,7 @@
         .movie__close{
           position: absolute;
           top: 5px;
-          right: 2vw;
+          right: 5px;
           font-size: 16px;      
         }
         .movie__watch, .movie__wanted{
@@ -64,6 +64,9 @@
           text-align: center;
           padding: 1vw;
           border-radius: 5px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     
@@ -76,7 +79,7 @@
         top: 5px;
         right: 5px;
         width: 30px;
-        height: 23px;
+        height: 21px;
         background-color: $mainColor;
         line-height: 5px;
         text-align: center;

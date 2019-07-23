@@ -14,9 +14,6 @@ class Calculate extends Component{
   
   render(){
     if (this.props.list.watch){
-      if ( Object.values(this.props.list.watch).length === 0 ){
-        return <div className="system_calculating">無分析資料...</div>
-      }
       return (
         <div >
           {
@@ -27,7 +24,7 @@ class Calculate extends Component{
       )
     } else {
       return (
-        <div className="system_calculating">系統分析中...</div>
+        <div className="system_calculating">無分析資料...</div>
       )
     }
   }

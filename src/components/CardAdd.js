@@ -9,7 +9,6 @@ class CardAdd extends Component{
     if (this.props.add){
       return (
         <div>
-          <div className="CardAdd">+</div>
           <div className="CardAdd__edit">
             <CardDetail Firebase={this.props.Firebase} />
           </div>

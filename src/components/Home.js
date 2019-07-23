@@ -9,7 +9,7 @@ class Home extends Component {
       movie: [],
       weather: 0,
       weatherIcon: '',
-      weatherArea: true,
+      weatherArea: false,
       movieArea: true
     }
   }
@@ -43,12 +43,11 @@ class Home extends Component {
       let jsonWeather = await responseWeather.json();
       this.setState({
         weather: jsonWeather.main.temp,
-        weatherIcon: 'https://openweathermap.org/img/w/' + jsonWeather.weather[0].icon + '.png'
+        weatherIcon: 'https://openweathermap.org/img/w/' + jsonWeather.weather[0].icon + '.png',
+        weatherArea: true
       })
     } catch (error) {
-      this.setState({
-        weatherArea: false
-      })
+      //do nothing
     }
   }
 

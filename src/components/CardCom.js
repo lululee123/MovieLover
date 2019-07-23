@@ -3,6 +3,7 @@ import CardAdd from './CardAdd';
 import Card from './Card';
 import { connect } from 'react-redux';
 import { AddCardType } from '../actions/index';
+import './css/CardCom.scss';
 
 class CardCom extends Component {
   constructor(props){
@@ -27,53 +28,32 @@ class CardCom extends Component {
 
   render(){
     return (
-      <div style = {style}>
-        <div style = {BtnStyle}>
-          <div style = { this.state.active === 'watch' ? active : nonactive} onClick = { () => {
-            this.props.AddCardType('watch' );
+      <div className="card__page ">
+        <div className="navBtn">
+          <div 
+            className={`navBtn__item ${this.state.active === 'watch' ? 'active' : ''}`} 
+            onClick = {() => {
+            this.props.AddCardType('watch');
             this.switch_to_watch();
-          } }>已觀看</div>
-          <div style = { this.state.active === 'wanted' ? active : nonactive} onClick = { () => {
+            }}>
+            已觀看
+          </div>
+          <div 
+            className={`navBtn__item ${this.state.active === 'wanted' ? 'active' : ''}`} 
+            onClick = {() => {
             this.props.AddCardType('wanted');
             this.switch_to_wanted();
-          } }>待觀看</div>
+            }}>
+            待觀看
+          </div>
         </div>
-        <div style={contentStyle}>
+        <div className="content" >
           <CardAdd Firebase={this.props.Firebase} />
           <Card Firebase={this.props.Firebase} />
         </div>
       </div>
     )
   }
-}
-const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  padding: 'calc(50px + 2vw) 2vw'
-};
-
-const BtnStyle = {
-  display: 'flex',
-  fontSize: '18px',
-  color: 'white',
-  marginBottom: '15px'
-  
-}
-
-const contentStyle ={
-  display: 'flex',
-}
-
-const active = {
-  color: 'yellow',
-  cursor: 'pointer',
-  marginRight: '5px'
-}
-
-const nonactive = {
-  color: 'white',
-  cursor: 'pointer',
-  marginRight: '5px'
 }
 
 const mapStateToProps = (state) => {
