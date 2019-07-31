@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/MovieLover/static/css/main.23046acc.chunk.css",
-    "main.js": "/MovieLover/static/js/main.cb2f5345.chunk.js",
-    "main.js.map": "/MovieLover/static/js/main.cb2f5345.chunk.js.map",
+    "main.css": "/MovieLover/static/css/main.e8b62272.chunk.css",
+    "main.js": "/MovieLover/static/js/main.a8f6aaff.chunk.js",
+    "main.js.map": "/MovieLover/static/js/main.a8f6aaff.chunk.js.map",
     "runtime~main.js": "/MovieLover/static/js/runtime~main.9e35bc98.js",
     "runtime~main.js.map": "/MovieLover/static/js/runtime~main.9e35bc98.js.map",
     "static/css/2.cc034990.chunk.css": "/MovieLover/static/css/2.cc034990.chunk.css",
-    "static/js/2.6e017bcc.chunk.js": "/MovieLover/static/js/2.6e017bcc.chunk.js",
-    "static/js/2.6e017bcc.chunk.js.map": "/MovieLover/static/js/2.6e017bcc.chunk.js.map",
+    "static/js/2.42010ee4.chunk.js": "/MovieLover/static/js/2.42010ee4.chunk.js",
+    "static/js/2.42010ee4.chunk.js.map": "/MovieLover/static/js/2.42010ee4.chunk.js.map",
     "index.html": "/MovieLover/index.html",
-    "precache-manifest.697affea000e2634c7ab55b134daab0a.js": "/MovieLover/precache-manifest.697affea000e2634c7ab55b134daab0a.js",
+    "precache-manifest.d7f24c55b592c01faa3ae670785a1ac9.js": "/MovieLover/precache-manifest.d7f24c55b592c01faa3ae670785a1ac9.js",
     "service-worker.js": "/MovieLover/service-worker.js",
     "static/css/2.cc034990.chunk.css.map": "/MovieLover/static/css/2.cc034990.chunk.css.map",
-    "static/css/main.23046acc.chunk.css.map": "/MovieLover/static/css/main.23046acc.chunk.css.map",
+    "static/css/main.e8b62272.chunk.css.map": "/MovieLover/static/css/main.e8b62272.chunk.css.map",
     "static/media/App.scss": "/MovieLover/static/media/oscars.08627993.svg",
-    "static/media/CardItem.scss": "/MovieLover/static/media/pencil.617303ab.svg"
+    "static/media/CardItem.scss": "/MovieLover/static/media/pencil.617303ab.svg",
+    "static/media/NowPlaying.scss": "/MovieLover/static/media/search.7c67a704.svg"
   }
 }
