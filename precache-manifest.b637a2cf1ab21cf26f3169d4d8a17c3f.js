@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "180cb5db9acb28ab9429535b3e6b55a9",
+    "revision": "8c9c052969fac78548b638c050763414",
     "url": "/MovieLover/index.html"
   },
   {
-    "revision": "0ee76ddb3a810a84366d",
+    "revision": "160c0c2381ac1729ba0c",
     "url": "/MovieLover/static/css/2.cc034990.chunk.css"
   },
   {
-    "revision": "83d4fb42c1fccb18c8b7",
-    "url": "/MovieLover/static/css/main.7d476743.chunk.css"
+    "revision": "a24bebaceec64a849143",
+    "url": "/MovieLover/static/css/main.b9a60657.chunk.css"
   },
   {
-    "revision": "0ee76ddb3a810a84366d",
-    "url": "/MovieLover/static/js/2.42010ee4.chunk.js"
+    "revision": "160c0c2381ac1729ba0c",
+    "url": "/MovieLover/static/js/2.cd5fc865.chunk.js"
   },
   {
-    "revision": "83d4fb42c1fccb18c8b7",
-    "url": "/MovieLover/static/js/main.dc7dea27.chunk.js"
+    "revision": "a24bebaceec64a849143",
+    "url": "/MovieLover/static/js/main.52b33c0b.chunk.js"
   },
   {
     "revision": "2cd9712871608e972a69",
