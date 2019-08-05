@@ -1,0 +1,22 @@
+.PlayTimeCard{
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 30px;
+  .PlayTimeCard__theater{
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .PlayTimeCard__timebox{
+    display: flex;
+    flex-wrap: wrap;
+    div{
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      padding: 7px;
+      color: wheat;
+      margin: 5px;  
+    }
+  }
+}

@@ -15,7 +15,6 @@
   bottom: 5vw;
   right: 5vw;
   z-index: 1;
-  animation: move_web 2s linear infinite;
   @media screen and (max-width:500px){
     width: 40px;
     height: 40px;
@@ -23,41 +22,6 @@
     border-radius: 40px;
     bottom: 10vw;
     right: 10vw;
-    animation: move_mobile 2s linear infinite;
-  }
-}
-@keyframes move_web{
-  0% {
-    bottom: 5vw;
-  }
-  25% {
-    bottom: 7vw;
-  }
-  50% {
-    bottom: 5vw;
-  }
-  75% {
-    bottom: 3vw;
-  }
-  100% {
-    bottom: 5vw;
-  }
-}
-@keyframes move_mobile{
-  0% {
-    bottom: 10vw;
-  }
-  25% {
-    bottom: 13vw;
-  }
-  50% {
-    bottom: 10vw;
-  }
-  75% {
-    bottom: 7vw;
-  }
-  100% {
-    bottom: 10vw;
   }
 }
 .CardAdd__edit{

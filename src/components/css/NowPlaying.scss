@@ -1,0 +1,178 @@
+@import 'color.scss';
+
+.noData{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  .noData__text{
+    color: white;
+    font-size: 30px;
+  }
+}
+.moviePlayList{
+  margin-top: 50px;
+  .moviePlayList__top{
+    padding: 5vw;
+    padding-bottom: 1vw;
+    @media screen and (max-width:1023px){
+      padding: 50px;
+      padding-bottom: 10px;
+    }
+    @media screen and (max-width:500px){
+      padding: 10px;
+      padding-bottom: 2px;
+    }
+    .top__selectArea{
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      border-radius: 5px;
+      //background: linear-gradient(183deg, red, rgba(255, 0, 0, 0) 70.71%), linear-gradient(166deg, lime, rgba(0, 255, 0, 0) 70.71%), linear-gradient(360deg, blue, rgba(0, 0, 255, 0) 70.71%);
+      select{
+        height: 35px;
+      }
+      .top__selectArea-movie{
+        margin-right: 20px;
+        width: 150px;
+      }
+      .top__selectArea-area{
+        width: 100px;
+      }
+    }
+  }
+  .moviePlayList__down{
+    padding: 2vw 5vw 5vw 5vw;
+    @media screen and (max-width:1023px){
+      padding: 20px 50px 50px 50px;
+    }
+    @media screen and (max-width:500px){
+      padding: 5px 10px 10px 10px;
+    }
+  }
+  .moviePoster__box{
+    display: flex;
+    margin-bottom: 30px;
+    .moviePoster__poster{
+      width: 200px;
+      @media screen and (max-width:1023px){
+        width: 30vw;
+      }
+      img{
+        width: 100%;
+      }
+    }
+    .moviePoster__title{
+      color: white;
+      height: 25px;
+      font-size: 20px;
+      margin-left: 10px;
+      font-weight: 600;
+      &:hover{
+        color: $mainColor;
+      }
+    }
+  }
+  .movieSearch{
+    background-color: rgba(51, 255, 226, 1);
+    padding: 1vw;
+    text-align: center;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    bottom: 5vw;
+    right: 5vw;
+    z-index: 1;
+    background-image: url('../../search.svg');
+    background-size: 55%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @media screen and (max-width:500px){
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      bottom: 10vw;
+      right: 10vw;
+    }
+  }
+  .search__mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+  }
+  .search__Box{
+    z-index: 2;
+    position: relative;
+    display: flex;
+    .search__inputArea{
+      display: flex;
+      flex-direction: column-reverse;
+      position: fixed;
+      bottom: 47px;
+      right: 110px;  
+      @media screen and (max-width:500px){
+        bottom: 39px;
+        right: 77px;    
+      }
+      .search__input{
+        border: none;
+        width: 180px;
+        height: 38px;
+        border-radius: 8px;
+        background-color: #FCFCFC;
+        padding-left: 10px;
+        outline: none;
+      }
+      .matchbox{
+        margin-bottom: 5px;
+        max-height: 120px;
+        overflow: scroll;
+        li{
+          padding: 7px;
+          cursor: pointer;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+          margin: 2px 0;
+          width: 176px;
+          &:nth-child(odd){
+            background-color: #B8B8B8;
+          }
+          &:nth-child(even){
+            background-color:#D3D3D3;
+          }
+        }
+      }
+    }
+    .search__cancel{
+      background-color: rgba(51, 255, 226, 1);
+      padding: 3px;
+      text-align: center;
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      font-size: 40px;
+      line-height: 48px;
+      border-radius: 50px;
+      cursor: pointer;
+      color: $mainColor;
+      bottom: 40px;
+      right: 45px;
+      z-index: 1;
+      @media screen and (max-width:500px){
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        bottom: 35px;
+        right: 20px;    
+        line-height: 40px;
+        font-size: 32px;
+      }
+    }
+  }
+}

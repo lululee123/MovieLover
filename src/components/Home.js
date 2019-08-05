@@ -65,7 +65,7 @@ class Home extends Component {
           ''
         }
         <br />
-        熱門影片
+        現正熱映
         {
           this.state.movieArea
           ?

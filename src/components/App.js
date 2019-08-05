@@ -5,6 +5,7 @@ import Signout from './Signout';
 import CardCom from './CardCom';
 import Home from './Home';
 import Calculate from './Calculate';
+import NowPlaying from './NowPlaying';
 import {
   HashRouter as Router,
   Route,
@@ -71,6 +72,7 @@ class App extends Component {
                 <Link to="/"><li className="navBar__logo"></li></Link>
                 <li><Link to="/Card">我的清單</Link></li>
                 <li><Link to="/Calculate">分析</Link></li>
+                <li><Link to="/NowPlaying">電影時刻表</Link></li>
               </div>
               <div className="right">
                 <Signout Firebase={this.props.Firebase} closeSideMenu={this.changeSideMenuStatus} />
@@ -83,9 +85,10 @@ class App extends Component {
                 this.state.sidemenu ? 
                   <div className="sidemenu">
                   <div className="close" onClick={this.changeSideMenuStatus}>&#10060;</div>
-                  <li onClick={this.changeSideMenuStatus}><Link to="/">靈感</Link></li>
+                  <li onClick={this.changeSideMenuStatus}><Link to="/">現正熱映</Link></li>
                   <li onClick={this.changeSideMenuStatus}><Link to="/Card">我的清單</Link></li>
                   <li onClick={this.changeSideMenuStatus}><Link to="/Calculate">分析</Link></li>
+                  <li onClick={this.changeSideMenuStatus}><Link to="/NowPlaying">電影時刻表</Link></li>
                   <Signout Firebase={this.props.Firebase} closeSideMenu={this.changeSideMenuStatus} />
                 </div>
                 : ''
@@ -94,6 +97,7 @@ class App extends Component {
             <Route exact path="/" render={() => <Home Firebase={this.props.Firebase} />}/>
             <Route  path="/Card" render={() => <CardCom Firebase={this.props.Firebase} />}/>
             <Route path="/Calculate" component={Calculate}/>
+            <Route  path="/NowPlaying" render={() => <NowPlaying Firebase={this.props.Firebase} />}/>
           </div>
         </Router>
     );

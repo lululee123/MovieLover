@@ -1,6 +1,7 @@
 import app from '../../../node_modules/firebase/app';
 import '../../../node_modules/firebase/auth';
 import '../../../node_modules/firebase/database';
+import moment from "moment";
 
 const config = {
   apiKey: "AIzaSyBqd2lmJTdVxcmAMUtmVjNNOef9JkHCvJA",
@@ -31,6 +32,11 @@ class Firebase {
   doFetchSignInMethodsForEmail = email => this.auth.fetchSignInMethodsForEmail(email);
 
   user = uid => this.db.ref(`users/${uid}`);
+
+  getMoviePlayList = () => this.db.ref(`moviePlayList/${moment(new Date()).format('YYYY-MM-DD')}`)
+
+  getMoviePosterDataList = () => this.db.ref(`moviePosterDataList/${moment(new Date()).format('YYYY-MM-DD')}`)
+
 }
 
 export default Firebase;
