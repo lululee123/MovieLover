@@ -2,11 +2,6 @@
 
 This is a platform you can record movies you have watched and is going to watch.  Hope you enjoy.
 
-
-
-
-
-
 --- 
 
 ## Technology I use:
@@ -25,3 +20,8 @@ This is a platform you can record movies you have watched and is going to watch.
     
    * Firebase Realtime Database
    * Running a script on AWS lambda every 6 hours written by Node.js to get movie poster and schedule from Yahoo.
+   
+   ---
+   
+   ## TODO
+   - [ ] Add TypeScript
