@@ -1,6 +1,10 @@
 ## Welcome: https://lululee123.github.io/MovieLover/#/
 
-> This is a platform you can record movies you have watched and is going to watch.  Hope you enjoy.
+This is a platform you can record movies you have watched and is going to watch.  Hope you enjoy.
+
+
+
+
 
 
 --- 
@@ -13,6 +17,7 @@
    * React.js
    * Redux
    * SCSS
+   * SPA
    * D3.js
   
   
