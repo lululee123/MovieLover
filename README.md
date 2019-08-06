@@ -24,4 +24,4 @@ This is a platform you can record movies you have watched and is going to watch.
    ---
    
    ## TODO
-   - [ ] Add TypeScript
+   - [ ] TypeScript
