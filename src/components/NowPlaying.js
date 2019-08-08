@@ -43,7 +43,7 @@ class NowPlaying extends Component{
   }
 
   detail = (e) => {
-    this.state.moviePlayList.map( (item) => {
+    this.state.moviePlayList.forEach( (item) => {
       if (Object.keys(item)[0] === e.target.value){
         this.setState({
           movie: e.target.value,
@@ -57,11 +57,11 @@ class NowPlaying extends Component{
   }
 
   renderMatchMovie = (e) => {
-    this.state.detail.map( (item) => {
+    this.state.detail.forEach( (item) => {
       if (Object.keys(item)[0] === e.target.value){
         //get poster
         let poster = {};
-        this.state.posterData.map((data) => {
+        this.state.posterData.forEach((data) => {
           if (Object.keys(data)[0] === this.state.movie){
             poster = data;
           }
@@ -84,15 +84,15 @@ class NowPlaying extends Component{
 
   search = (e) =>{
     let movie = e.currentTarget.innerHTML;
-    this.state.moviePlayList.map( (item) => {
+    this.state.moviePlayList.forEach( (item) => {
       if (Object.keys(item)[0] === movie){
         let combinedList = {};
-        item[movie].map( (item) => {
+        item[movie].forEach( (item) => {
           combinedList = Object.assign(combinedList, item[Object.keys(item)])
         })
         //get poster
         let poster = {};
-        this.state.posterData.map((data) => {
+        this.state.posterData.forEach((data) => {
           if (Object.keys(data)[0] === movie){
           poster = data;
           }
@@ -112,7 +112,7 @@ class NowPlaying extends Component{
 
   getMatchList = (name) => {
     let matchList = [];
-    this.state.moviePlayList.map( (item) => {
+    this.state.moviePlayList.forEach( (item) => {
       if (name.trim() !== '' && Object.keys(item)[0].includes(name)){
         matchList.push(Object.keys(item)[0]);
       }

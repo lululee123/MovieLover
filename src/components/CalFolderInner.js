@@ -18,7 +18,7 @@ class CalFolderInner extends Component{
       obj = {};
       value = 0;
       obj.date = dataList[i];
-      this.props.files.map(item => {
+      this.props.files.forEach(item => {
         if (parseInt(dataList[i]) === parseInt(item.month)){
           value ++;
         }

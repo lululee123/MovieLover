@@ -34,7 +34,7 @@
         position: absolute;
         background-color: $mainColor;
         top: 0;
-        width: 13vw;
+        width: 17vw;
         height: 25.87vw;
         display: flex;
         flex-direction: column;
@@ -42,11 +42,11 @@
         padding: 0 2vw;
         font-size: 16px;
         @media screen and (max-width:1023px){
-          width: 19vw;
+          width: 23vw;
           height: 35vw;
         }
         @media screen and (max-width:500px){
-          width: 25vw;
+          width: 29vw;
           height: 44.13vw;
           font-size: 12px;
         }
@@ -54,7 +54,8 @@
           position: absolute;
           top: 5px;
           right: 5px;
-          font-size: 16px;      
+          font-size: 16px;
+          cursor: pointer;      
         }
         .movie__watch, .movie__wanted{
           display: block;
@@ -84,6 +85,7 @@
         line-height: 5px;
         text-align: center;
         border-radius: 30px;
+        cursor: pointer;
       }
 
       .movie__image{

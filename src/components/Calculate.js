@@ -1,32 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import './css/Calculate.scss';
 import CalTotal from './CalTotal';
 import CalFolder from './CalFolder';
 
-class Calculate extends Component{
-  total = () => {
-    let time = Object.values(this.props.list.watch).map((item) => {
+const Calculate = (props) => {
+  const total = () => {
+    let time = Object.values(props.list.watch).map((item) => {
       return item.time;
     });
     return <CalTotal total={time.length} />
   }
   
-  render(){
-    if (this.props.list.watch){
-      return (
-        <div >
-          {
-            this.total()
-          }
-          <CalFolder files={this.props.data} />
-        </div>
-      )
-    } else {
-      return (
-        <div className="system_calculating">無分析資料...</div>
-      )
-    }
+  if (props.list.watch){
+    return (
+      <div >
+        {
+          total()
+        }
+        <CalFolder files={props.data} />
+      </div>
+    )
+  } else {
+    return (
+      <div className="system_calculating">無分析資料...</div>
+    )
   }
 }
 
