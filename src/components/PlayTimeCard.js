@@ -4,7 +4,9 @@ import './css/PlayTimeCard.scss';
 const PlayTimeCard = (props) =>{  
   return (
     <div className="PlayTimeCard">
-      <div className="PlayTimeCard__theater">{props.theater}</div>
+      <div className="PlayTimeCard__theater">
+        <a href={`https://maps.google.com/maps?q=${props.theater}`}>{props.theater}</a>
+      </div>
       <div className="PlayTimeCard__timebox">
         { 
           props.time.map( (item) => {

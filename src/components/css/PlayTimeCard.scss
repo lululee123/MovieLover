@@ -1,12 +1,19 @@
+@import 'color.scss';
+
 .PlayTimeCard{
   border: 1px solid lightgray;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 30px;
   .PlayTimeCard__theater{
-    color: white;
-    font-size: 18px;
     margin-bottom: 10px;
+    a{
+      color: white;
+      font-size: 18px;
+      &:hover{
+        color: $mainColor;
+      }
+    }
   }
   .PlayTimeCard__timebox{
     display: flex;
