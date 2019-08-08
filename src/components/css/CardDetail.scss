@@ -51,15 +51,18 @@
       padding-left: 1vw;
       font-size: 14px;
       height: 4.5vw;
+      margin: 2vw 0;
     }
     @media screen and (max-width:750px){
       padding-left: 1vw;
       font-size: 14px;
       height: 6vw;  
+      margin: 3vw 0;
     }
     @media screen and (max-width:500px){
       font-size: 12px;
       height: 8vw;  
+      margin: 4vw 0;
     }
   }
 }
