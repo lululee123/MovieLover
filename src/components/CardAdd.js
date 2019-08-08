@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { AddCard } from '../actions/index';
 import CardDetail from './CardDetail';
 import './css/CardAdd.scss';
 
-class CardAdd extends Component{
-  render(){
-    if (this.props.add){
-      return (
-        <div>
-          <div className="CardAdd__edit">
-            <CardDetail Firebase={this.props.Firebase} />
-          </div>
-        </div>
-      )
-    }
+const CardAdd = (props) => {
+  if (props.add){
     return (
-      <div className="CardAdd" onClick={() => {this.props.AddCard(!this.props.add)}}>+</div>
+      <div>
+        <div className="CardAdd__edit">
+          <CardDetail Firebase={props.Firebase} />
+        </div>
+      </div>
     )
   }
+  return (
+    <div className="CardAdd" onClick={() => {props.AddCard(!props.add)}}>+</div>
+  )
 }
 
 const mapStateToProps = (state) => {
