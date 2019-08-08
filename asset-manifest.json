@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/MovieLover/static/css/main.85754b90.chunk.css",
+    "main.css": "/MovieLover/static/css/main.58acc7d3.chunk.css",
     "main.js": "/MovieLover/static/js/main.f027512e.chunk.js",
     "main.js.map": "/MovieLover/static/js/main.f027512e.chunk.js.map",
     "runtime~main.js": "/MovieLover/static/js/runtime~main.9e35bc98.js",
@@ -9,10 +9,10 @@
     "static/js/2.b1f7c3e2.chunk.js": "/MovieLover/static/js/2.b1f7c3e2.chunk.js",
     "static/js/2.b1f7c3e2.chunk.js.map": "/MovieLover/static/js/2.b1f7c3e2.chunk.js.map",
     "index.html": "/MovieLover/index.html",
-    "precache-manifest.5b9dcb7791cd613ef23005d58bf1ba5a.js": "/MovieLover/precache-manifest.5b9dcb7791cd613ef23005d58bf1ba5a.js",
+    "precache-manifest.3724ffbd3ccc5f8d9f3575953a845822.js": "/MovieLover/precache-manifest.3724ffbd3ccc5f8d9f3575953a845822.js",
     "service-worker.js": "/MovieLover/service-worker.js",
     "static/css/2.cc034990.chunk.css.map": "/MovieLover/static/css/2.cc034990.chunk.css.map",
-    "static/css/main.85754b90.chunk.css.map": "/MovieLover/static/css/main.85754b90.chunk.css.map",
+    "static/css/main.58acc7d3.chunk.css.map": "/MovieLover/static/css/main.58acc7d3.chunk.css.map",
     "static/media/App.scss": "/MovieLover/static/media/oscars.08627993.svg",
     "static/media/CardItem.scss": "/MovieLover/static/media/pencil.617303ab.svg",
     "static/media/NowPlaying.scss": "/MovieLover/static/media/search.7c67a704.svg"
