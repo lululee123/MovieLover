@@ -14,13 +14,23 @@ import {
 import { connect } from 'react-redux';
 import { TaskList, getUser } from '../actions/index';
 
-class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      sidemenu: false,
-      get: false
-    }
+interface State{
+  sidemenu: boolean;
+  get: boolean;
+}
+
+interface Props{
+  getUser: typeof getUser;
+  TaskList: typeof TaskList;
+  firebaseUID: string;
+  CheckLogin: string;
+  Firebase: any;
+}
+
+class App extends Component<Props, State> {
+  state: State = {
+    sidemenu: false,
+    get: false
   }
 
   componentDidMount(){
@@ -35,7 +45,7 @@ class App extends Component {
 
   getListWhileFirebaseIDReady = () => {
     if (this.props.Firebase && !this.state.get){
-      this.props.Firebase.user(this.props.firebaseUID).on("value", snap => {
+      this.props.Firebase.user(this.props.firebaseUID).on("value", (snap: any) => {
         if (snap.val() !==  null){
           this.props.TaskList(snap.val());
         } else {
@@ -106,7 +116,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return { 
     firebaseUID: state.CheckLoginReducer.uid,
     CheckLogin: state.CheckLoginReducer.status

@@ -1,13 +1,14 @@
 import firebase from "firebase/app";
+import * as constants from './constants';
 
-export const AddCard = (add) => {
+export const AddCard = (add: boolean) => {
   return {
-    type: "ADD_CARD",
+    type: constants.ADDCARD,
     payload: add
   }
 }
 
-export const AddCardType = (type) => {
+export const AddCardType = (type: string) => {
   return {
     type: 'ADD_CARD_TYPE',
     payload: type
@@ -15,7 +16,7 @@ export const AddCardType = (type) => {
 }
 
 
-const Fetch= (res) => {
+const Fetch= (res: string) => {
   return {
     type: 'FETCH',
     payload: res
@@ -27,19 +28,19 @@ const FetchError = () => {
   }
 }
 
-export const getUser = () => (dispatch) => {
+export const getUser = () => (dispatch: any) => {
   let user = firebase.auth().currentUser;
   if (user) {
     dispatch(Fetch(user.uid));
   } else if (localStorage.getItem('FirebaseUID')){
-    dispatch(Fetch(localStorage.getItem('FirebaseUID')));
+    dispatch(Fetch(localStorage.getItem('FirebaseUID') || ''));
   } else {
     dispatch(FetchError());
   }
 }
 
 
-const FetchTaskList = (res) => {
+const FetchTaskList = (res: any) => {
   return {
     type: 'FETCHTASKLIST',
     payload: res
@@ -53,7 +54,7 @@ const EmptyTaskList = () => {
   }
 } 
 
-export const TaskList = (list) => (dispatch) => {
+export const TaskList = (list: any) => (dispatch: any) => {
   if (list) {
     dispatch(FetchTaskList(list));
   } else {

@@ -21,15 +21,22 @@ class Home extends Component {
         throw Error(responseMovie.statusText);
       }
       let jsonMovie = await responseMovie.json();
-      let movie = jsonMovie.results.map((item, idx) => {
-        return (
-          <HomeMovie Firebase={this.props.Firebase} item={item} key={idx}/>
-        )
-      })
-      this.setState({
-        movie: movie
-      })
-    } catch (error) {
+      if (jsonMovie.results.length !== 0){
+        let movie = jsonMovie.results.map((item, idx) => {
+          return (
+            <HomeMovie Firebase={this.props.Firebase} item={item} key={idx}/>
+          )
+        })
+        this.setState({
+          movie: movie
+        })
+      } else {
+        this.setState({
+          movieArea: false
+        })
+      }
+    } 
+    catch (error) {
       this.setState({
         movieArea: false
       })

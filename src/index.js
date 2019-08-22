@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import combineReducers from './reducers/index';
-import Firebase from './components/Firebase/';
+import Firebase from './components/Firebase';
 
 
 ReactDOM.render(
