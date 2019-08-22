@@ -16,7 +16,7 @@ class Home extends Component {
 
   async componentDidMount() {
     try {
-      let responseMovie = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=62e89effcdf6600bdd0c99c694029d19&language=zh-TW&region=tw");
+      let responseMovie = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=62e89effcdf6600bdd0c99c694029d19&language=zh-TW");
       if (!responseMovie.ok) {
         throw Error(responseMovie.statusText);
       }
