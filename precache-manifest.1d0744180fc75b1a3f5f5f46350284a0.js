@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "69f9ef16f6a3a93bb38c51088ac7d713",
+    "revision": "b94cf771e89979b6668ace7d1aecfb7e",
     "url": "/MovieLover/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MovieLover/static/css/2.cc034990.chunk.css"
   },
   {
-    "revision": "24fe7dfbf116ad40628c",
+    "revision": "fb6dd3eac7f46f4990a3",
     "url": "/MovieLover/static/css/main.4dbbba5f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MovieLover/static/js/2.b1f7c3e2.chunk.js"
   },
   {
-    "revision": "24fe7dfbf116ad40628c",
-    "url": "/MovieLover/static/js/main.4ce62413.chunk.js"
+    "revision": "fb6dd3eac7f46f4990a3",
+    "url": "/MovieLover/static/js/main.fb316546.chunk.js"
   },
   {
     "revision": "2cd9712871608e972a69",
