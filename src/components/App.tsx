@@ -20,8 +20,8 @@ interface State{
 }
 
 interface Props{
-  getUser: typeof getUser;
-  TaskList: typeof TaskList;
+  getUser: any;
+  TaskList: any;
   firebaseUID: string;
   CheckLogin: string;
   Firebase: any;

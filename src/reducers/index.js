@@ -21,7 +21,6 @@ const CheckLoginReducer = (UserInit = {status: 'Loading', uid: '', list: {}}, ac
     case 'FETCH_ERROR':
       return {status: 'Unlogin', uid: '', list: {}};
     case 'FETCHTASKLIST':
-      return {...UserInit, list: action.payload};
     case 'EMPTYTASKLIST':
       return {...UserInit, list: action.payload}
     default: 

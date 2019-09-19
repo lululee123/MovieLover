@@ -2,27 +2,35 @@ import React, { Component } from 'react';
 import './css/Home.scss';
 import HomeMovie from './HomeMovie';
 
-class Home extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      movie: [],
-      weather: 0,
-      weatherIcon: '',
-      weatherArea: false,
-      movieArea: true
-    }
+interface State {
+  movie: Array<any>;
+  weather: string;
+  weatherIcon: string;
+  weatherArea: boolean;
+  movieArea: boolean;
+}
+interface Props {
+  Firebase: any;
+}
+
+class Home extends Component<Props, State> {
+  state: State = {
+    movie: [],
+    weather: '0',
+    weatherIcon: '',
+    weatherArea: false,
+    movieArea: true
   }
 
   async componentDidMount() {
     try {
-      let responseMovie = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=62e89effcdf6600bdd0c99c694029d19&language=zh-TW&region=tw");
+      let responseMovie = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=62e89effcdf6600bdd0c99c694029d19&language=zh-TW");
       if (!responseMovie.ok) {
         throw Error(responseMovie.statusText);
       }
       let jsonMovie = await responseMovie.json();
       if (jsonMovie.results.length !== 0){
-        let movie = jsonMovie.results.map((item, idx) => {
+        let movie = jsonMovie.results.map((item: any, idx: number) => {
           return (
             <HomeMovie Firebase={this.props.Firebase} item={item} key={idx}/>
           )
@@ -82,7 +90,6 @@ class Home extends Component {
           :
           <div>無資料...</div>
         } 
-        
       </div>
     )
   }  
